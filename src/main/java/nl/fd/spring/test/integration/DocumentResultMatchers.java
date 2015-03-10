@@ -29,6 +29,15 @@ class DocumentResultMatchers {
         };
     }
 
+    public static DocumentResultMatcher hasHtmlInElement(final String selector, final String htmlText){
+        return new DocumentResultMatcher() {
+            @Override
+            protected void match(Document document) throws Exception {
+                assertThat(ElementSelectors.selectSingle(document, selector), ElementWithOwnText.hasOwnText(htmlText));
+            }
+        };
+    }
+
     public static DocumentResultMatcher singleElement(final String selector) {
         return new DocumentResultMatcher() {
             @Override

@@ -5,6 +5,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.test.web.servlet.ResultMatcher;
 
+import javax.print.Doc;
+
 /**
  * @author Quinten Krijger
  */
@@ -37,6 +39,10 @@ public final class HtmlResultMatchers {
 
     public ResultMatcher withTitle(final String title) {
         return DocumentResultMatchers.title(title);
+    }
+
+    public ResultMatcher selectorWithHtmlText(final String selector, final String htmlText){
+        return DocumentResultMatcher.hasHtmlInElement(selector,htmlText);
     }
 
     public ResultMatcher withSingleElement(final String selector) {
